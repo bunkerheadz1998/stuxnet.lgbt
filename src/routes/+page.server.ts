@@ -6,7 +6,7 @@ import {
 	type GetChannelContentsApiResponse
 } from 'arena-ts';
 
-export const load: PageLoad = async ({ fetch }) => {
+export const load: PageLoad = async () => {
 	const client = new ArenaClient({ token: ARENA_TOKEN });
 
 	const channel: ArenaChannelApi = await client
@@ -14,8 +14,13 @@ export const load: PageLoad = async ({ fetch }) => {
 
 	const { contents: posts }: GetChannelContentsApiResponse = await channel.contents()
 
+	const lastSeen = posts
+		.map(({ updated_at }) => updated_at)
+		.sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0]
+
   return {
-    posts
+    posts,
+		lastSeen
   };
 };
 

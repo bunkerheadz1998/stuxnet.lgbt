@@ -4,7 +4,6 @@ import { type ArenaChannelContents } from 'arena-ts';
 	export let data;
 
 	const posts: ArenaChannelContents = data.posts;
-	console.log(posts)
 </script>
 
 <main>
@@ -22,18 +21,12 @@ import { type ArenaChannelContents } from 'arena-ts';
 </main>
 
 <style>
-	/*
-	:global(html, body) {
-		background: #000;
-		color: oklch(92.8% 0.006 264.531);
-	}
-	*/
-
 	main {
 		max-width: 440px;
 	}
 
 	img {
+		min-width: 200px;
 		max-width: 100%;
 	}
 </style>
